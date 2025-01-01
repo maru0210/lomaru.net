@@ -1,11 +1,20 @@
-import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleCode } from "contentful";
+import type {
+  ChainModifiers,
+  Entry,
+  EntryFieldTypes,
+  EntrySkeletonType,
+  LocaleCode,
+} from "contentful";
 
 export interface TypeBlogFields {
-    slug: EntryFieldTypes.Symbol;
-    title?: EntryFieldTypes.Symbol;
-    eyecatch?: EntryFieldTypes.AssetLink;
-    body?: EntryFieldTypes.RichText;
+  slug: EntryFieldTypes.Symbol;
+  title?: EntryFieldTypes.Symbol;
+  eyecatch?: EntryFieldTypes.AssetLink;
+  body?: EntryFieldTypes.RichText;
 }
 
 export type TypeBlogSkeleton = EntrySkeletonType<TypeBlogFields, "blog">;
-export type TypeBlog<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeBlogSkeleton, Modifiers, Locales>;
+export type TypeBlog<
+  Modifiers extends ChainModifiers,
+  Locales extends LocaleCode = LocaleCode,
+> = Entry<TypeBlogSkeleton, Modifiers, Locales>;
