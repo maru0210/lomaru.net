@@ -9,8 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/tailwind": "^5.1.4",
     "@contentful/rich-text-html-renderer": "^17.0.0",
     "astro": "^5.1.1",
-    "contentful": "^11.4.0"
+    "contentful": "^11.4.0",
+    "tailwindcss": "^3.4.17"
   }
 }
