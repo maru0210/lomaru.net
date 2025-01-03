@@ -1,32 +1,28 @@
 ---
-import type { EntryFields } from "contentful";
-import { contentfulClient } from "../libs/contentful";
-import type { TypeBlogSkeleton } from "../types/content-types";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import Layout from "../layouts/Layout.astro";
+import { getBlogDetail, getBlogs } from "../libs/microcms";
 import "../styles/blog.css";
 
 export async function getStaticPaths() {
-  const entries = await contentfulClient.getEntries<TypeBlogSkeleton>({
-    content_type: "blog",
-  });
-
-  const pages = entries.items.map((item) => ({
-    params: { slug: item.fields.slug },
+  const response = await getBlogs({ fields: ["id", "slug"] });
+  return response.contents.map((content) => ({
+    params: {
+      slug: content.slug,
+    },
     props: {
-      title: item.fields.title,
-      eyecatch_url: ("https:" +
-        (item.fields.eyecatch as EntryFields.AssetLink)?.fields.file
-          ?.url) as string,
-      date: item.fields.date,
-      body: documentToHtmlString(item.fields.body),
+      id: content.id,
     },
   }));
-
-  return pages;
 }
 
-const { title, eyecatch_url, date, body } = Astro.props;
+const { id } = Astro.props;
+const content = await getBlogDetail(id);
+const post = {
+  title: content.title,
+  eyecatch_url: content.eyecatch.url,
+  body: content.body,
+  date: new Date(content.publishedAt ?? 0).toLocaleDateString(),
+};
 ---
 
 <Layout>
@@ -34,16 +30,16 @@ const { title, eyecatch_url, date, body } = Astro.props;
     <div class="tracking-wide">
       <div class="space-y-4 pb-16">
         <div class="text-right font-semibold text-neutral-500">
-          {new Date(date).toLocaleDateString()}
+          {post.date}
         </div>
-        <div class="text-3xl font-semibold">{title}</div>
+        <div class="text-3xl font-semibold">{post.title}</div>
         <img
-          src={eyecatch_url}
+          src={post.eyecatch_url}
           class="rounded-xl shadow-xl shadow-neutral-100"
         />
       </div>
 
-      <article set:html={body} class="leading-relaxed" />
+      <article set:html={post.body} class="leading-relaxed" />
     </div>
   </div>
 </Layout>
