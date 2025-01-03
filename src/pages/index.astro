@@ -1,22 +1,15 @@
 ---
-import type { EntryFields } from "contentful";
 import BlogCard from "../components/BlogCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { contentfulClient } from "../libs/contentful";
-import type { TypeBlogSkeleton } from "../types/content-types";
+import { getBlogs } from "../libs/microcms";
 
-const entries = await contentfulClient.getEntries<TypeBlogSkeleton>({
-  content_type: "blog",
-  order: ["-fields.date"],
-});
+const response = await getBlogs({ fields: ["slug", "title", "eyecatch"] });
 
-const posts = entries.items.map((item) => ({
-  slug: item.fields.slug,
-  title: item.fields.title,
-  eyecatch_url: ("https:" +
-    (item.fields.eyecatch as EntryFields.AssetLink)?.fields.file
-      ?.url) as string,
-  date: item.fields.date,
+const posts = response.contents.map((content) => ({
+  slug: content.slug,
+  title: content.title,
+  eyecatch_url: content.eyecatch.url,
+  date: new Date(content.publishedAt ?? 0).toLocaleDateString(),
 }));
 ---
 
