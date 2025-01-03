@@ -1,27 +1,56 @@
 article > *:first-child {
-  @apply mt-0
+  @apply mt-0;
 }
 
 article > * {
   @apply mb-4;
 }
 
+/* heding */
 article > :where(h1, h2, h3) {
   @apply font-semibold;
 }
 
 article > h1 {
-  @apply text-2xl mt-8;
+  @apply mt-8 text-2xl;
 }
 
 article > h2 {
-  @apply text-xl;
+  @apply mt-4 text-xl;
 }
 
 article > h3 {
-  @apply text-lg;
+  @apply mt-2 text-lg;
 }
 
+/* ul */
 article > ul {
-  @apply list-disc pl-8
+  @apply list-disc pl-8;
+}
+
+article > ul > li::marker {
+  @apply text-neutral-900;
+}
+
+/* figure(img) */
+article > figure {
+  @apply rounded-xl px-1 shadow-xl shadow-neutral-100;
+}
+
+/* code */
+article > p > code {
+  @apply font-code px-2 tracking-normal;
+}
+
+/* pre */
+article > div:has(pre) {
+  @apply px-1;
+}
+
+article > div > pre {
+  @apply rounded-xl bg-[#282C34] p-4 text-sm tracking-normal text-[#ACB2BE];
+}
+
+article > div > pre > code {
+  @apply font-code;
 }
