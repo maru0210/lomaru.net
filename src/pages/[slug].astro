@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { highlightBody } from "../libs/highlight";
 import { getBlogDetail, getBlogs } from "../libs/microcms";
 import "../styles/blog.css";
+import "highlight.js/styles/atom-one-dark.min.css";
 
 export async function getStaticPaths() {
   const response = await getBlogs({ fields: ["id", "slug"] });
@@ -20,7 +22,7 @@ const content = await getBlogDetail(id);
 const post = {
   title: content.title,
   eyecatch_url: content.eyecatch.url,
-  body: content.body,
+  body: highlightBody(content.body),
   date: new Date(content.publishedAt ?? 0).toLocaleDateString(),
 };
 ---
