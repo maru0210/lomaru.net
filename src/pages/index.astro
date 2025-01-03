@@ -12,8 +12,8 @@ const entries = await contentfulClient.getEntries<TypeBlogSkeleton>({
 const posts = entries.items.map((item) => ({
   slug: item.fields.slug,
   title: item.fields.title ?? "",
-  eyecatch_url:
-    (item.fields.eyecatch as EntryFields.AssetLink).fields.file?.url ?? "",
+  eyecatch_url: (item.fields.eyecatch as EntryFields.AssetLink)?.fields.file
+    ?.url,
   date: item.fields.date,
 }));
 ---
