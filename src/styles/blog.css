@@ -1,0 +1,27 @@
+article > *:first-child {
+  @apply mt-0
+}
+
+article > * {
+  @apply mb-4;
+}
+
+article > :where(h1, h2, h3) {
+  @apply font-semibold;
+}
+
+article > h1 {
+  @apply text-2xl mt-8;
+}
+
+article > h2 {
+  @apply text-xl;
+}
+
+article > h3 {
+  @apply text-lg;
+}
+
+article > ul {
+  @apply list-disc pl-8
+}
