@@ -3,20 +3,20 @@ const { slug, title, eyecatch_url, date } = Astro.props;
 ---
 
 <div
-  class="overflow-hidden rounded-xl bg-white shadow-xl shadow-neutral-100 transition duration-300 hover:shadow-neutral-200 [&_img]:hover:scale-105"
+  class="relative overflow-hidden rounded-xl bg-white shadow-xl shadow-neutral-100 transition duration-300 hover:shadow-neutral-200 [&_img]:hover:scale-105"
 >
-  <a href={`/${slug}`}>
-    <div class="overflow-hidden">
-      <img
-        src={eyecatch_url}
-        class="aspect-video h-auto object-cover transition duration-300"
-      />
-    </div>
+  <a href={`/${slug}`} class="absolute size-full"></a>
 
-    <div class="flex flex-col gap-1 px-4 py-3">
-      <!-- <div class="text-sm">#TAG</div> -->
-      <div class="text-sm">{new Date(date).toLocaleDateString()}</div>
-      <h2 class="text-base font-semibold">{title}</h2>
-    </div>
-  </a>
+  <div class="overflow-hidden">
+    <img
+      src={eyecatch_url}
+      class="aspect-video h-auto object-cover transition duration-300"
+    />
+  </div>
+
+  <div class="flex flex-col gap-1 px-4 py-3">
+    <!-- <div class="text-sm">#TAG</div> -->
+    <div class="text-sm">{new Date(date).toLocaleDateString()}</div>
+    <h2 class="text-base font-semibold">{title}</h2>
+  </div>
 </div>
