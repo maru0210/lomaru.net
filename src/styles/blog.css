@@ -23,6 +23,15 @@ article > h3 {
   @apply mt-2 text-lg;
 }
 
+/* a */
+article > p > a {
+  @apply text-fuchsia-700 transition duration-300;
+}
+
+article > p > a:hover {
+  @apply text-purple-700;
+}
+
 /* ul */
 article > ul {
   @apply list-disc pl-8;
@@ -34,23 +43,35 @@ article > ul > li::marker {
 
 /* figure(img) */
 article > figure {
-  @apply rounded-xl px-1 shadow-xl shadow-neutral-100;
+  @apply mx-1 rounded-xl shadow-xl shadow-neutral-100;
 }
 
 /* code */
 article > p > code {
-  @apply font-code px-2 tracking-normal;
+  @apply font-code mx-1 tracking-normal;
 }
 
 /* pre */
-article > div:has(pre) {
-  @apply px-1;
+article pre {
+  @apply mx-1;
 }
 
-article > div > pre {
-  @apply rounded-xl bg-[#282C34] p-4 text-sm tracking-normal text-[#ACB2BE];
+article div[data-filename] > pre {
+  @apply rounded-ss-none;
 }
 
-article > div > pre > code {
+article div:has(pre) > span {
+  @apply ml-1 inline-block rounded-t-xl bg-neutral-200 px-3.5 py-1 text-sm font-bold;
+}
+
+article pre {
+  @apply overflow-hidden rounded-xl bg-[#282C34] text-sm tracking-normal text-[#ACB2BE];
+}
+
+article div[data-filename] > pre {
+  @apply mt-0;
+}
+
+article pre > code {
   @apply font-code;
 }
