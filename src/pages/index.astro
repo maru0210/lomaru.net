@@ -1,7 +1,38 @@
 ---
+import type { EntryFields, EntrySys } from "contentful";
+import BlogCard from "../components/BlogCard.astro";
 import Layout from "../layouts/Layout.astro";
+import { contentfulClient } from "../libs/contentful";
+import type { TypeBlogSkeleton } from "../types/content-types";
+
+const entries = await contentfulClient.getEntries<TypeBlogSkeleton>({
+  content_type: "blog",
+});
+
+const posts = entries.items.map((item) => ({
+  slug: item.fields.slug,
+  title: item.fields.title ?? "",
+  eyecatch_url:
+    (item.fields.eyecatch as EntryFields.AssetLink).fields.file?.url ?? "",
+  date: item.fields.date,
+}));
 ---
 
 <Layout>
-	lomaru.net
+  <div class="mx-auto max-w-screen-lg px-8">
+    <div
+      class="flex w-full flex-wrap gap-8 py-4 sm:[&>*]:w-[calc((100%-2rem)/2)] lg:[&>*]:w-[calc((100%-4rem)/3)]"
+    >
+      {
+        posts.map((post) => (
+          <BlogCard
+            slug={post.slug}
+            title={post.title}
+            eyecatch_url={post.eyecatch_url}
+            date={post.date}
+          />
+        ))
+      }
+    </div>
+  </div>
 </Layout>
