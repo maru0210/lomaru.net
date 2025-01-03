@@ -1,5 +1,5 @@
 ---
-import type { EntryFields, EntrySys } from "contentful";
+import type { EntryFields } from "contentful";
 import BlogCard from "../components/BlogCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { contentfulClient } from "../libs/contentful";
@@ -7,6 +7,7 @@ import type { TypeBlogSkeleton } from "../types/content-types";
 
 const entries = await contentfulClient.getEntries<TypeBlogSkeleton>({
   content_type: "blog",
+  order: ["-fields.date"],
 });
 
 const posts = entries.items.map((item) => ({
