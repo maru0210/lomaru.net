@@ -9,6 +9,7 @@ import type {
 export interface TypeBlogFields {
   slug: EntryFieldTypes.Symbol;
   title?: EntryFieldTypes.Symbol;
+  date?: EntryFieldTypes.Date;
   eyecatch?: EntryFieldTypes.AssetLink;
   body?: EntryFieldTypes.RichText;
 }
