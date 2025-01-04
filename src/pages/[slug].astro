@@ -21,7 +21,7 @@ const { id } = Astro.props;
 const content = await getBlogDetail(id);
 const post = {
   title: content.title,
-  eyecatch_url: content.eyecatch.url,
+  eyecatch_url: content.eyecatch?.url,
   body: highlightBody(content.body),
   date: new Date(content.publishedAt ?? 0).toLocaleDateString(),
 };

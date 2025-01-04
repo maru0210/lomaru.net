@@ -8,7 +8,7 @@ const response = await getBlogs({ fields: ["slug", "title", "eyecatch"] });
 const posts = response.contents.map((content) => ({
   slug: content.slug,
   title: content.title,
-  eyecatch_url: content.eyecatch.url,
+  eyecatch_url: content.eyecatch?.url,
   date: new Date(content.publishedAt ?? 0).toLocaleDateString(),
 }));
 ---
