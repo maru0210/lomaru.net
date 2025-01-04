@@ -43,12 +43,12 @@ article > ul > li::marker {
 
 /* figure(img) */
 article > figure {
-  @apply mx-1 rounded-xl shadow-xl shadow-neutral-100;
+  @apply mx-1 overflow-hidden rounded-xl shadow-lg;
 }
 
 /* code */
 article > p > code {
-  @apply font-code mx-1 tracking-normal;
+  @apply mx-1 font-code tracking-normal;
 }
 
 /* pre */
