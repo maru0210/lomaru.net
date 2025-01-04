@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { highlightBody } from "../libs/highlight";
 import { getBlogDetail, getBlogs } from "../libs/microcms";
@@ -35,7 +36,13 @@ const post = {
           {post.date}
         </div>
         <div class="text-3xl font-semibold">{post.title}</div>
-        <img src={post.eyecatch_url} class="rounded-xl shadow-lg" />
+        <Image
+          src={post.eyecatch_url}
+          alt="Eyecatch"
+          class="rounded-xl shadow-lg"
+          width={1920}
+          height={1080}
+        />
       </div>
 
       <article set:html={post.body} class="leading-relaxed" />

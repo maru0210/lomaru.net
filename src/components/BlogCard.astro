@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const { slug, title, eyecatch_url, date } = Astro.props;
 ---
 
@@ -7,12 +9,19 @@ const { slug, title, eyecatch_url, date } = Astro.props;
 >
   <a href={"/" + slug} class="absolute z-50 size-full"></a>
 
-  <div class="overflow-hidden">
-    <img
-      src={eyecatch_url}
-      class="aspect-video h-auto object-cover transition duration-300"
-    />
-  </div>
+  {
+    eyecatch_url && (
+      <div class="overflow-hidden">
+        <Image
+          src={eyecatch_url}
+          alt="Eyecatch"
+          class="aspect-video h-auto object-cover transition duration-300"
+          width={1920}
+          height={1080}
+        />
+      </div>
+    )
+  }
 
   <div class="flex flex-col gap-1 px-4 py-3">
     <!-- <div class="text-sm">#TAG</div> -->
