@@ -3,7 +3,7 @@ article > *:first-child {
 }
 
 article > * {
-  @apply mb-4;
+  @apply mt-4;
 }
 
 /* heding */
@@ -12,15 +12,15 @@ article > :where(h1, h2, h3) {
 }
 
 article > h1 {
-  @apply mt-8 text-2xl;
+  @apply mt-16 text-2xl;
 }
 
 article > h2 {
-  @apply mt-4 text-xl;
+  @apply mt-8 text-xl;
 }
 
 article > h3 {
-  @apply mt-2 text-lg;
+  @apply text-lg;
 }
 
 /* a */
@@ -43,7 +43,11 @@ article > ul > li::marker {
 
 /* figure(img) */
 article > figure {
-  @apply mx-1 overflow-hidden rounded-xl shadow-lg;
+  @apply mx-1 pb-4;
+}
+
+article > figure > img {
+  @apply overflow-hidden shadow-lg;
 }
 
 /* code */

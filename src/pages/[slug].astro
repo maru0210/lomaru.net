@@ -29,20 +29,24 @@ const post = {
 ---
 
 <Layout>
-  <div class="mx-auto max-w-screen-md px-8">
-    <div class="tracking-wide">
+  <div class="w-full max-w-screen-md px-8">
+    <div class="w-full tracking-wide">
       <div class="space-y-4 pb-16">
         <div class="text-right font-semibold text-neutral-500">
           {post.date}
         </div>
         <div class="text-3xl font-semibold">{post.title}</div>
-        <Image
-          src={post.eyecatch_url}
-          alt="Eyecatch"
-          class="rounded-xl shadow-lg"
-          width={1920}
-          height={1080}
-        />
+        {
+          post.eyecatch_url && (
+            <Image
+              src={post.eyecatch_url}
+              alt="Eyecatch"
+              class="rounded-xl pb-4 shadow-lg"
+              width={1920}
+              height={1080}
+            />
+          )
+        }
       </div>
 
       <article set:html={post.body} class="leading-relaxed" />
