@@ -3,7 +3,7 @@ article > *:first-child {
 }
 
 article > * {
-  @apply mt-8;
+  @apply mt-4;
 }
 
 /* heding */
@@ -25,11 +25,7 @@ article > h3 {
 
 /* a */
 article > p > a {
-  @apply text-fuchsia-700 transition duration-300;
-}
-
-article > p > a:hover {
-  @apply text-purple-700;
+  @apply text-fuchsia-700 transition duration-300 hover:text-purple-800;
 }
 
 /* ul */
