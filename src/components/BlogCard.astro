@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+
+const { slug, title, eyecatch_url, date } = Astro.props;
+---
+
+<div
+  class="relative w-full overflow-hidden rounded-lg bg-white shadow-lg transition duration-300 hover:scale-[1.01] hover:shadow-xl"
+>
+  <a href={"/" + slug} class="absolute z-50 size-full"></a>
+
+  {
+    eyecatch_url && (
+      <div class="overflow-hidden">
+        <Image
+          src={eyecatch_url}
+          alt="Eyecatch"
+          class="aspect-video h-auto object-cover transition duration-300"
+          width={1920}
+          height={1080}
+        />
+      </div>
+    )
+  }
+
+  <div class="flex flex-col gap-1 px-4 py-3">
+    <!-- <div class="text-sm">#TAG</div> -->
+    <div class="text-subfont text-xs font-bold">{date}</div>
+    <h2 class="text-base font-semibold">{title}</h2>
+  </div>
+</div>

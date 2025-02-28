@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import { highlightBody } from "../libs/highlight";
+import { getBlogDetail, getBlogs } from "../libs/microcms";
+import "../styles/blog.css";
+import "highlight.js/styles/atom-one-dark.min.css";
+
+export async function getStaticPaths() {
+  const response = await getBlogs({ fields: ["id", "slug"] });
+  return response.contents.map((content) => ({
+    params: {
+      slug: content.slug,
+    },
+    props: {
+      id: content.id,
+    },
+  }));
+}
+
+const { id } = Astro.props;
+const content = await getBlogDetail(id);
+const post = {
+  title: content.title,
+  eyecatch_url: content.eyecatch?.url,
+  body: highlightBody(content.body),
+  date: new Date(content.publishedAt ?? 0).toLocaleDateString(),
+};
+---
+
+<Layout title={post.title}>
+  <div class="mx-auto w-full max-w-screen-sm p-10 sm:p-12">
+    <div class="w-full tracking-wide">
+      <div class="flex flex-col gap-4">
+        <div class="text-3xl font-semibold">{post.title}</div>
+        <div class="text-subfont text-sm font-semibold">
+          {post.date}
+        </div>
+        {
+          post.eyecatch_url && (
+            <Image
+              src={post.eyecatch_url}
+              alt="Eyecatch"
+              class="my-2 rounded-xl shadow-lg"
+              width={1920}
+              height={1080}
+            />
+          )
+        }
+      </div>
+
+      <div class="mx-auto my-16 w-11/12 border-t border-neutral-300"></div>
+
+      <article set:html={post.body} class="leading-loose" />
+    </div>
+  </div>
+</Layout>
