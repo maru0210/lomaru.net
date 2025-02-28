@@ -3,7 +3,9 @@ import BlogCard from "../components/BlogCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { getBlogs } from "../libs/microcms";
 
-const response = await getBlogs({ fields: ["slug", "title", "eyecatch"] });
+const response = await getBlogs({
+  fields: ["slug", "title", "eyecatch", "publishedAt"],
+});
 
 const posts = response.contents.map((content) => ({
   slug: content.slug,
