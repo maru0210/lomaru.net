@@ -39,7 +39,7 @@ article > ul > li::marker {
 
 /* figure(img) */
 article > figure {
-  @apply mx-1 pb-4;
+  @apply mx-1 py-2;
 }
 
 article > figure > img {
