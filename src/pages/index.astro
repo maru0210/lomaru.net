@@ -14,10 +14,10 @@ const posts = response.contents.map((content) => ({
 ---
 
 <Layout>
-  <div class="mx-auto w-full max-w-screen-lg px-8">
-    <div
-      class="flex w-full flex-wrap gap-8 py-4 sm:[&>*]:w-[calc((100%-2rem)/2)] lg:[&>*]:w-[calc((100%-4rem)/3)]"
-    >
+  <div
+    class="mx-auto w-full p-12 tracking-wide md:max-w-screen-md lg:max-w-screen-lg"
+  >
+    <div class="grid w-full gap-12 sm:grid-cols-2 lg:grid-cols-3">
       {
         posts.map((post) => (
           <BlogCard
