@@ -10,6 +10,9 @@ export default {
         body: ["MPLUS2", ...defaultTheme.fontFamily.sans],
         code: ["JetBrainsMono", ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        fontcolor: "#333333",
+      },
     },
   },
   plugins: [],
