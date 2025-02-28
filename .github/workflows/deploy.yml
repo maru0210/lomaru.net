@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   # このワークフローをGitHubのActionsタブから手動で実行できるようにします。
   workflow_dispatch:
+  # Webhook
+  repository_dispatch:
+    types: [blog-update]
 
 jobs:
   deploy:
