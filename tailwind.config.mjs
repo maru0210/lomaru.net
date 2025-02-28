@@ -7,7 +7,7 @@ export default {
     extend: {
       fontFamily: {
         logo: ["Outfit", ...defaultTheme.fontFamily.sans],
-        body: ["MPLUS2", ...defaultTheme.fontFamily.sans],
+        main: ["NotoSans", ...defaultTheme.fontFamily.sans],
         code: ["JetBrainsMono", ...defaultTheme.fontFamily.sans],
       },
       colors: {
