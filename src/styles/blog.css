@@ -75,3 +75,8 @@ article div[data-filename] > pre {
 article pre > code {
   @apply font-code;
 }
+
+/* logo */
+article > p .logo {
+  @apply mx-1 select-none font-logo;
+}
