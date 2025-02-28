@@ -29,25 +29,27 @@ const post = {
 ---
 
 <Layout>
-  <div class="mx-auto w-full max-w-screen-sm px-8">
-    <div class="w-full tracking-wider">
-      <div class="flex flex-col gap-4 pb-16">
-        <div class="text-right font-semibold text-neutral-500">
+  <div class="mx-auto w-full max-w-screen-sm p-12">
+    <div class="w-full tracking-wide">
+      <div class="flex flex-col gap-4">
+        <div class="text-3xl font-semibold">{post.title}</div>
+        <div class="text-subfont text-sm font-semibold">
           {post.date}
         </div>
-        <div class="text-3xl font-semibold">{post.title}</div>
         {
           post.eyecatch_url && (
             <Image
               src={post.eyecatch_url}
               alt="Eyecatch"
-              class="mb-4 rounded-xl shadow-lg"
+              class="my-2 rounded-xl shadow-lg"
               width={1920}
               height={1080}
             />
           )
         }
       </div>
+
+      <div class="mx-auto my-16 w-11/12 border-t border-neutral-300"></div>
 
       <article set:html={post.body} class="leading-loose" />
     </div>
