@@ -11,6 +11,7 @@ export default {
         code: ["JetBrainsMono", ...defaultTheme.fontFamily.sans],
       },
       colors: {
+        logo: "#0c0c0c",
         font: "#333333",
         subfont: "#666666",
       },
