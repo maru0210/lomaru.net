@@ -2,14 +2,17 @@
 import BlogCard from "../components/BlogCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { getBlogs } from "../libs/microcms";
+import { formatDate } from "../libs/util";
 
-const response = await getBlogs({ fields: ["slug", "title", "eyecatch"] });
+const response = await getBlogs({
+  fields: ["slug", "title", "eyecatch", "publishedAt"],
+});
 
 const posts = response.contents.map((content) => ({
   slug: content.slug,
   title: content.title,
   eyecatch_url: content.eyecatch?.url,
-  date: new Date(content.publishedAt ?? 0).toLocaleDateString(),
+  date: formatDate(content.publishedAt),
 }));
 ---
 
