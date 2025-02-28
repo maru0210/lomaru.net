@@ -3,7 +3,7 @@ article > *:first-child {
 }
 
 article > * {
-  @apply mt-4;
+  @apply mt-8;
 }
 
 /* heding */
@@ -12,11 +12,11 @@ article > :where(h1, h2, h3) {
 }
 
 article > h1 {
-  @apply mt-16 text-2xl;
+  @apply mt-24 text-2xl;
 }
 
 article > h2 {
-  @apply mt-8 text-xl;
+  @apply mt-16 text-xl;
 }
 
 article > h3 {
