@@ -30,11 +30,11 @@ article > p > a {
 
 /* ul */
 article > ul {
-  @apply list-disc pl-8;
+  @apply list-disc pl-6;
 }
 
 article > ul > li::marker {
-  @apply text-neutral-900;
+  @apply text-font;
 }
 
 /* figure(img) */
