@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  # このワークフローをGitHubのActionsタブから手動で実行できるようにします。
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+        
+      - name: Install, build, and upload your site
+        uses: withastro/action@v3
+        env:
+          MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: sv51.cloudfree.ne.jp
+          username: deploy@lomaru.net
+          password: ${{ secrets.password }}
+          local-dir: ./dist/
