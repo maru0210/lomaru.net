@@ -12,6 +12,7 @@ export default {
       },
       colors: {
         font: "#333333",
+        subfont: "#666666",
       },
     },
   },
