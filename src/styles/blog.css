@@ -25,7 +25,7 @@ article > h3 {
 
 /* a */
 article > p > a {
-  @apply mx-1 text-fuchsia-700 transition duration-300 hover:text-purple-800;
+  @apply text-fuchsia-700 transition duration-300 hover:text-purple-800;
 }
 
 /* ul */
@@ -78,5 +78,5 @@ article pre > code {
 
 /* logo */
 article > p .logo {
-  @apply text-logo select-none font-logo;
+  @apply text-logo mx-1 select-none font-logo;
 }
