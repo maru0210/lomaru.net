@@ -6,6 +6,7 @@ import { getBlogDetail, getBlogs } from "../libs/microcms";
 import "../styles/blog.css";
 import "highlight.js/styles/atom-one-dark.min.css";
 import { formatDate } from "../libs/util";
+import CalendarDays from "../icons/calendar-days.astro";
 
 export async function getStaticPaths() {
   const response = await getBlogs({ fields: ["id", "slug"] });
@@ -33,8 +34,11 @@ const post = {
   <div class="col-span-full mx-auto max-w-[560px]">
     <div class="w-full tracking-wide">
       <div class="flex flex-col gap-4">
-        <div class="text-3xl font-semibold">{post.title}</div>
-        <div class="text-sm font-semibold text-subfont">
+        <div class="text-2xl font-semibold sm:text-3xl">{post.title}</div>
+        <div class="flex gap-1 text-sm font-semibold text-subfont">
+          <div class="*:size-5">
+            <CalendarDays />
+          </div>
           {post.date}
         </div>
         {
