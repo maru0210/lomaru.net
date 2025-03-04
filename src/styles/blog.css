@@ -78,5 +78,5 @@ article pre > code {
 
 /* logo */
 article > p .logo {
-  @apply text-logo mx-1 select-none font-logo;
+  @apply text-logo select-none font-logo;
 }
