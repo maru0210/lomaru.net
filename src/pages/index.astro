@@ -17,22 +17,16 @@ const posts = response.contents.map((content) => ({
 ---
 
 <Layout>
-  <div
-    class="mx-auto w-full p-10 sm:p-12 md:max-w-screen-md lg:max-w-screen-lg"
-  >
-    <div class="w-full tracking-wide">
-      <div class="grid w-full gap-12 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          posts.map((post) => (
-            <BlogCard
-              slug={post.slug}
-              title={post.title}
-              eyecatch_url={post.eyecatch_url}
-              date={post.date}
-            />
-          ))
-        }
+  {
+    posts.map((post) => (
+      <div class="col-span-full sm:col-span-6 md:col-span-4">
+        <BlogCard
+          slug={post.slug}
+          title={post.title}
+          eyecatch_url={post.eyecatch_url}
+          date={post.date}
+        />
       </div>
-    </div>
-  </div>
+    ))
+  }
 </Layout>

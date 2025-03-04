@@ -5,7 +5,7 @@ const { slug, title, eyecatch_url, date } = Astro.props;
 ---
 
 <div
-  class="relative w-full overflow-hidden rounded-lg bg-white shadow-lg transition duration-300 hover:scale-[1.01] hover:shadow-xl"
+  class="relative overflow-hidden rounded-lg bg-white shadow-lg transition duration-300 hover:scale-[1.01] hover:shadow-xl"
 >
   <a href={"/" + slug} class="absolute z-50 size-full"></a>
 
@@ -25,7 +25,7 @@ const { slug, title, eyecatch_url, date } = Astro.props;
 
   <div class="flex flex-col gap-1 px-4 py-3">
     <!-- <div class="text-sm">#TAG</div> -->
-    <div class="text-subfont text-xs font-bold">{date}</div>
+    <div class="text-xs font-bold text-subfont">{date}</div>
     <h2 class="text-base font-semibold">{title}</h2>
   </div>
 </div>
