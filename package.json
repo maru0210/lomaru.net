@@ -1,7 +1,7 @@
 {
   "name": "lomaru-net",
   "type": "module",
-  "version": "1.1.5",
+  "version": "1.1.7",
   "scripts": {
     "dev": "astro dev --host",
     "build": "astro build",
@@ -9,9 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/tailwind": "^6.0.0",
-    "astro": "^5.4.0",
+    "@astrojs/sitemap": "^3.4.2",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.12.4",
     "cheerio": "^1.0.0",
     "highlight.js": "^11.11.1",
     "microcms-js-sdk": "^3.1.2",
