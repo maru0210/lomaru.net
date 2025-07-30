@@ -1,12 +1,12 @@
 ---
 import { Image } from "astro:assets";
+import "highlight.js/styles/atom-one-dark.min.css";
+import CalendarDays from "../icons/calendar-days.astro";
 import Layout from "../layouts/Layout.astro";
 import { highlightBody } from "../libs/highlight";
 import { getBlogDetail, getBlogs } from "../libs/microcms";
-import "../styles/blog.css";
-import "highlight.js/styles/atom-one-dark.min.css";
 import { formatDate } from "../libs/util";
-import CalendarDays from "../icons/calendar-days.astro";
+import "../styles/blog.css";
 
 export async function getStaticPaths() {
   const response = await getBlogs({ fields: ["id", "slug"] });
@@ -30,36 +30,29 @@ const post = {
 };
 ---
 
-<Layout title={post.title}>
-  <div class="mx-auto max-w-[560px]">
-    <div class="w-full tracking-wide">
-      <div class="flex flex-col gap-4">
-        <div class="text-xl font-semibold sm:text-2xl">{post.title}</div>
-        <div class="flex gap-1 text-sm font-semibold text-subfont">
-          <div class="*:size-5">
-            <CalendarDays />
-          </div>
-          {post.date}
-        </div>
-        {
-          post.eyecatch_url && (
-            <Image
-              src={post.eyecatch_url}
-              alt="Eyecatch"
-              class="my-2 rounded-xl shadow-lg"
-              width={1920}
-              height={1080}
-            />
-          )
-        }
+<Layout title={post.title} className="w-full max-w-screen-sm p-8">
+  <div class="flex flex-col gap-4">
+    <div class="text-xl font-semibold sm:text-2xl">{post.title}</div>
+    <div class="flex gap-1 text-xs font-semibold text-subfont sm:text-sm">
+      <div class="*:sm:size-5">
+        <CalendarDays />
       </div>
-
-      <hr class="mx-auto my-16 w-11/12 border-neutral-300" />
-
-      <article
-        set:html={post.body}
-        class="text-sm !leading-loose sm:text-base"
-      />
+      {post.date}
     </div>
+    {
+      post.eyecatch_url && (
+        <Image
+          src={post.eyecatch_url}
+          alt="Eyecatch"
+          class="my-2 rounded-xl shadow-lg"
+          width={1920}
+          height={1080}
+        />
+      )
+    }
   </div>
+
+  <hr class="mx-auto my-16 w-11/12 border-neutral-300" />
+
+  <article set:html={post.body} />
 </Layout>

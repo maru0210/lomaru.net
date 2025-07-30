@@ -14,6 +14,8 @@ export default {
         logo: "#0c0c0c",
         font: "#333333",
         subfont: "#666666",
+        biwa: "#ae7c4f",
+        twilight: "#6A7F9B",
       },
     },
   },

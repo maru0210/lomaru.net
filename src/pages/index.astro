@@ -16,17 +16,17 @@ const posts = response.contents.map((content) => ({
 }));
 ---
 
-<Layout grid>
-  {
-    posts.map((post) => (
-      <div class="col-span-full sm:col-span-6 md:col-span-4">
+<Layout className="p-8 sm:max-w-screen-sm lg:max-w-screen-lg">
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      posts.map((post) => (
         <BlogCard
           slug={post.slug}
           title={post.title}
           eyecatch_url={post.eyecatch_url}
           date={post.date}
         />
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </Layout>
