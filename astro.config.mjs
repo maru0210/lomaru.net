@@ -9,4 +9,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   integrations: [tailwind(), sitemap()],
   site: "https://lomaru.net",
+  image: {
+    domains: ["images.microcms-assets.io"],
+  },
 });

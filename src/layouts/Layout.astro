@@ -7,9 +7,10 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   className?: string;
+  og_image?: string;
 }
 
-const { title, className } = Astro.props;
+const { title, className, og_image } = Astro.props;
 
 const pageTitle = title ? `${title} - lomaru` : "lomaru";
 ---
@@ -26,7 +27,10 @@ const pageTitle = title ? `${title} - lomaru` : "lomaru";
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="og:title" content={pageTitle} />
-    <meta name="og:image" content="https://lomaru.net/favicon.png" />
+    <meta
+      name="og:image"
+      content={og_image ?? "https://lomaru.net/favicon.png"}
+    />
   </head>
   <body class="flex min-h-full flex-col items-center font-main text-font">
     <Header />
